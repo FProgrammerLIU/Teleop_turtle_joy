@@ -1,0 +1,20 @@
+<launch>
+ <!-- Turtlesim Node-->
+  <node pkg="turtlesim" type="turtlesim_node" name="sim"/>
+
+ <!-- joy node -->
+  <node respawn="true" pkg="joy"
+        type="joy_node" name="turtle_joy" >
+    <param name="dev" type="string" value="/dev/input/js0" />
+    <param name="deadzone" value="0.12" />
+  </node>
+
+ <!-- Axes -->
+  <param name="axis_linear" value="1" type="int"/>
+  <param name="axis_angular" value="0" type="int"/>
+<!-- Buttons -->
+  <param name="button_move" value="0" type="int"/>
+  <param name="button_linear" value="1" type="int"/>
+  <param name="button_angular" value="7" type="int"/>
+  <node pkg="teleop_joy" type="teleop_turtle_joy_main" name="teleop" output="screen"/>
+</launch>
